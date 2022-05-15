@@ -1,0 +1,21 @@
+We have followed the proposed design of the Sludge archive, with filename and size,
+stored as a header before each archive entry. In addition to that, we have added
+the length of filename, as a header member, to support all filenames.
+
++------------------------+
+| Filename length: 10    |
+| Filename: DESIGN.txt   |
+| File size: 1024        |
++------------------------+
+| <DEISNG.txt data>      |
++------------------------+
+| Filename length: 8     |
+| Filename: sludge.c     |
+| File size: 7354        |
++------------------------+
+| <sludge.c data>        |
++------------------------+
+
+  Files are stored/extracted in the order they appear in argument list.
+  If a file exists in archive it, can't be added again.
+  If a file exists in filesystem, it can't be overwritten on extract.
